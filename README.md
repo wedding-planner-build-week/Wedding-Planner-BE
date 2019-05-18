@@ -6,6 +6,8 @@
 >         "item_photo": "https://images.unsplash.com/photo-1510076857177-7470076d4098?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80",
 >         "vendor_list": "vendor list goes here",
 >         "wedding_date": "2019-03-30",
+>         "wedding_location": "Boston, Massachusetts" 
+>         "wedding_photographer": "Daniel Westbrook"
 >         "user_id": 2
 >     }
 
