@@ -9,10 +9,16 @@ exports.seed = function(knex, Promise) {
       location: "Boston, MA"
     },
     {
-      username: "dog",
+      username: "sarah",
       password: bcrypt.hashSync("password", 14),
-      email: "ilovedogs@gmail.com",
-      location: "San Diego, CA"
+      email: "567@567.com",
+      location: "Austin, TX"
+    },
+    {
+      username: "karen",
+      password: bcrypt.hashSync("password", 14),
+      email: "789@789.com",
+      location: "Orlando, FL"
     }
   ]);
 };
