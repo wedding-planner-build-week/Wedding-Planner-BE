@@ -54,8 +54,10 @@ router.get("/:id", restricted, (req, res) => {
 router.post("/", restricted, (req, res) => {
   const post = req.body;
 
-  if (!post.item_name) {
-    res.status(400).json({ error: "Please provide a name for the post." });
+  if (!post.couple_name) {
+    res
+      .status(400)
+      .json({ error: "Please provide a couple name for the post." });
   } else {
     post.user_id = req.decodedToken.subject;
     db("posts")
@@ -113,7 +115,6 @@ router.delete("/:id", restricted, (req, res) => {
   const { id } = req.params;
 
   db("posts")
-    // org
     // .where({ id, user_id: req.decodedToken.subject })
     .del()
     .returning("id")
