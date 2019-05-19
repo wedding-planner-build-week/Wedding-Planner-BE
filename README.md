@@ -13,7 +13,7 @@
 
 ### https://lambda-wedding-planner.herokuapp.com/api/auth/register
 * a POST request will register a new user. Will also provide a JSON Web Token. 
-* **Required:** username field and password field.
+* **Required:** username, password, email, and location
 
 ### https://lambda-wedding-planner.herokuapp.com/api/auth/login
 * a POST request will login an already registered user. Will also provide a JSON Web Token. 
