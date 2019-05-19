@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const tokens = require("./token.js");
 const db = require("../data/dbConfig");
 
-router.post("/register", (req, res) => {
+router.get("/register", (req, res) => {
   const user = req.body;
 
   if (!user.username || !user.password || !user.email || !user.location) {
@@ -45,7 +45,7 @@ router.post("/register", (req, res) => {
   }
 });
 
-router.post("/login", (req, res) => {
+router.get("/login", (req, res) => {
   let { username, password, email, location } = req.body;
   if (!username || !password || !email || !location) {
     res.status(400).json({
