@@ -15,7 +15,6 @@ router.post("/register", (req, res) => {
   } else {
     const hash = bcrypt.hashSync(user.password, 14);
     user.password = hash;
-    console.log("hi");
     db("users")
       .insert(user)
       .then(ids => {

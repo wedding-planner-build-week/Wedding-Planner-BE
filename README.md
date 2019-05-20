@@ -38,3 +38,5 @@
 
 ### https://lambda-wedding-planner.herokuapp.com/api/posts/:id
 * a DELETE request to this route will return the number of wedding posts deleted for the logged in user. 
+
+!
