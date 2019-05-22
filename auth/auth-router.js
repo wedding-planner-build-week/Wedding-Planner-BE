@@ -44,8 +44,8 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  let { username, password, email, location } = req.body;
-  if (!username || !password || !email || !location) {
+  let { username, password } = req.body;
+  if (!username || !password) {
     res.status(400).json({
       error: "Please provide a username and password."
     });
