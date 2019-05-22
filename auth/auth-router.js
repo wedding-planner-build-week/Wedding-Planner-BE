@@ -18,7 +18,6 @@ router.post("/register", (req, res) => {
     db("users")
       .insert(user)
       .then(ids => {
-        console.log("******", ids);
         const id = ids[0];
 
         db("users")
