@@ -4,9 +4,8 @@ const router = express.Router();
 const db = require("../data/dbConfig.js");
 const restricted = require("../auth/restricted.js");
 
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   db("posts")
-    // restricted,
     .returning("id")
     .where({ user_id: req.decodedToken.subject })
     .then(posts => {
@@ -28,9 +27,9 @@ router.get("/all", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", restricted, (req, res) => {
   const { id } = req.params;
-  // restricted,
+
   db("posts")
     .returning("id")
     .where({ id, user_id: req.decodedToken.subject })
@@ -51,9 +50,9 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   const post = req.body;
-  // restricted,
+
   if (!post.couple_name) {
     res
       .status(400)
@@ -81,8 +80,7 @@ router.post("/", (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
-  // restricted,
+router.put("/:id", restricted, (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
@@ -92,7 +90,7 @@ router.put("/:id", (req, res) => {
     });
   } else {
     db("posts")
-      // .where({ id, user_id: req.decodedToken.subject })
+      .where({ id, user_id: req.decodedToken.subject })
       .update(changes)
       .returning("id")
       .then(count => {
@@ -112,9 +110,8 @@ router.put("/:id", (req, res) => {
   }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", restricted, (req, res) => {
   const { id } = req.params;
-  // restricted,
   db("posts")
     .where({ id, user_id: req.decodedToken.subject })
     .del()
