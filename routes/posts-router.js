@@ -4,8 +4,9 @@ const router = express.Router();
 const db = require("../data/dbConfig.js");
 const restricted = require("../auth/restricted.js");
 
-router.get("/", restricted, (req, res) => {
+router.get("/", (req, res) => {
   db("posts")
+    // restricted,
     .returning("id")
     .where({ user_id: req.decodedToken.subject })
     .then(posts => {
@@ -27,9 +28,9 @@ router.get("/all", (req, res) => {
     });
 });
 
-router.get("/:id", restricted, (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
-
+  // restricted,
   db("posts")
     .returning("id")
     .where({ id, user_id: req.decodedToken.subject })
@@ -50,9 +51,9 @@ router.get("/:id", restricted, (req, res) => {
     });
 });
 
-router.post("/", restricted, (req, res) => {
+router.post("/", (req, res) => {
   const post = req.body;
-
+  // restricted,
   if (!post.couple_name) {
     res
       .status(400)
@@ -111,9 +112,9 @@ router.put("/:id", (req, res) => {
   }
 });
 
-router.delete("/:id", restricted, (req, res) => {
+router.delete("/:id", (req, res) => {
   const { id } = req.params;
-
+  // restricted,
   db("posts")
     .where({ id, user_id: req.decodedToken.subject })
     .del()
